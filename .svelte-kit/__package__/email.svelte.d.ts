@@ -1,6 +1,10 @@
 export default Email;
-declare const Email: import("svelte").Component<{
+declare const Email: import("svelte").Component<
+  {
     items: {
-        name: string;
+      name: string;
     }[];
-}, {}, "">;
+  },
+  {},
+  ""
+>;

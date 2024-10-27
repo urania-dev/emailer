@@ -1,12 +1,21 @@
 # Email Component Library
 
-This is a library for creating structured and styled HTML emails, intended as a transitional resource. Designed for convenience, it allows developers to build and customize emails quickly while encouraging best practices by illustrating the internal composition of emails through self-contained components. Inspired by Resend's [@react/email](https://react.email/).
+This is a library for creating structured and styled HTML emails, intended as a
+transitional resource. Designed for convenience, it allows developers to build
+and customize emails quickly while encouraging best practices by illustrating
+the internal composition of emails through self-contained components. Inspired
+by Resend's [@react/email](https://react.email/).
 
-This library takes a similar approach to the one applied by pilcrow's to [The Copenhagen Book](https://thecopenhagenbook.com): this library is intended as a learning tool and a starting point. As developers become comfortable with the email structure and utilities provided, they are encouraged to transition toward standalone solutions.
+This library takes a similar approach to the one applied by pilcrow's to
+[The Copenhagen Book](https://thecopenhagenbook.com): this library is intended
+as a learning tool and a starting point. As developers become comfortable with
+the email structure and utilities provided, they are encouraged to transition
+toward standalone solutions.
 
 ---
 
 ## Installation
+
 To install the package, run:
 
 ```bash
@@ -14,7 +23,11 @@ npm install @uraniadev/emailer
 ```
 
 ## Quick Start
-This library provides a set of unstyled, modular email components (e.g., `Button`, `Container`, `Heading`) built with Svelte and styled with Tailwind CSS. Components use `inline` styling through `tw-to-css` to ensure email compatibility.
+
+This library provides a set of unstyled, modular email components (e.g.,
+`Button`, `Container`, `Heading`) built with Svelte and styled with Tailwind
+CSS. Components use `inline` styling through `tw-to-css` to ensure email
+compatibility.
 
 ### Example Usage
 
@@ -43,25 +56,26 @@ Create an email using the provided components:
 Then render this email in your server-side script:
 
 ```typescript
-import Emailer from '@uraniadev/emailer';
-import Email from './email.svelte';
+import Emailer from "@uraniadev/emailer";
+import Email from "./email.svelte";
 
 const emailer = new Emailer();
 
-const html = emailer.render(Email, { /* props */ });
-sendMail(html);  // Use your preferred email-sending method
+const html = emailer.render(Email, {/* props */});
+sendMail(html); // Use your preferred email-sending method
 ```
 
-
 ### Utility Function: Inline Styling with `tw-to-css`
-This library includes an `inline` utility that merges Tailwind styles with `tw-to-css` to create compatible inline styles for emails:
+
+This library includes an `inline` utility that merges Tailwind styles with
+`tw-to-css` to create compatible inline styles for emails:
 
 ```typescript
-import { inline } from '@uraniadev/emailer';
+import { inline } from "@uraniadev/emailer";
 
-<p style={inline('text-lg text-pink-500 font-bold')}>
+<p style={inline("text-lg text-pink-500 font-bold")}>
   This is a formatted text
-</p>
+</p>;
 ```
 
 ```typescript
@@ -76,12 +90,12 @@ import { twi } from "tw-to-css";
 export function inline(...inputs: ClassValue[]) {
   return twi(twMerge(clsx(inputs)));
 }
-
 ```
 
 ## Components
 
 ### `Button`
+
 A link-styled button that accepts `class` and `href` attributes.
 
 ```svelte
@@ -89,6 +103,7 @@ A link-styled button that accepts `class` and `href` attributes.
 ```
 
 ### `Card`
+
 A general-purpose card component for grouping content sections.
 
 ```svelte
@@ -96,6 +111,7 @@ A general-purpose card component for grouping content sections.
 ```
 
 ### `Container`
+
 A wrapper to align email content and provide consistent padding.
 
 ```svelte
@@ -103,6 +119,7 @@ A wrapper to align email content and provide consistent padding.
 ```
 
 ### `Heading`
+
 A responsive heading element allowing level-based customization.
 
 ```svelte
@@ -110,6 +127,7 @@ A responsive heading element allowing level-based customization.
 ```
 
 ### `Image`
+
 An image wrapper with optional classes.
 
 ```svelte
@@ -117,6 +135,7 @@ An image wrapper with optional classes.
 ```
 
 ### `Paragraph`
+
 For general text blocks, styled for readability.
 
 ```svelte
@@ -124,8 +143,9 @@ For general text blocks, styled for readability.
 ```
 
 ### `Repeatable`
-Generates repeated content, such as lists, from an array.
-`itemsSnippet` can be use to stylize the repeated item
+
+Generates repeated content, such as lists, from an array. `itemsSnippet` can be
+use to stylize the repeated item
 
 ```svelte
 <Repeatable items={[1, 2, 3]}>
@@ -137,44 +157,62 @@ Generates repeated content, such as lists, from an array.
 </Repeatable>
 ```
 
-
 ## API: Emailer Class
-`Emailer` is the primary class used to render emails, taking in a Svelte component and outputting an HTML template. It can be customized by passing configuration options for `props`, `lang`, `dir`, and `style`.
+
+`Emailer` is the primary class used to render emails, taking in a Svelte
+component and outputting an HTML template. It can be customized by passing
+configuration options for `props`, `lang`, `dir`, and `style`.
 
 ```typescript
 class Emailer {
   render<T extends Component<any>>(
     component: T,
     props?: ComponentProps<T>,
-    config?: HTMLConfig
+    config?: HTMLConfig,
   ): string;
 }
 ```
 
 ## HTML Boilerplate
 
-The `htmlBoilerplate` function in the `Emailer` class generates the complete HTML structure for email content, applying essential styles and configuration for better rendering across email clients. This function wraps the main content (`children`) in an HTML template, ensuring consistency and compatibility.
+The `htmlBoilerplate` function in the `Emailer` class generates the complete
+HTML structure for email content, applying essential styles and configuration
+for better rendering across email clients. This function wraps the main content
+(`children`) in an HTML template, ensuring consistency and compatibility.
 
 #### Properties
 
-- **props**: A set of default styling properties for the `html`, `body`, and `container` elements, configurable via the `HTMLConfig` type. Each property is an array of style strings, providing styles like background color, text color, and padding.
-- **dir**: Defines text direction, with the default set to "ltr" (left-to-right). This can be adjusted based on the email's language requirements.
-- **lang**: Specifies the language of the email content, set to "en" by default for English.
-- **style**: A global style string that applies custom styling to the entire HTML document, offering flexibility to embed CSS directly within the `<style>` tag.
+- **props**: A set of default styling properties for the `html`, `body`, and
+  `container` elements, configurable via the `HTMLConfig` type. Each property is
+  an array of style strings, providing styles like background color, text color,
+  and padding.
+- **dir**: Defines text direction, with the default set to "ltr"
+  (left-to-right). This can be adjusted based on the email's language
+  requirements.
+- **lang**: Specifies the language of the email content, set to "en" by default
+  for English.
+- **style**: A global style string that applies custom styling to the entire
+  HTML document, offering flexibility to embed CSS directly within the `<style>`
+  tag.
 
 #### Usage in `render` function
 
-The `Emailer.render()` method uses `htmlBoilerplate` to wrap the rendered body of a Svelte component (provided in `render` as `component`). The function also accepts:
-- **head**: Optional custom content or metadata for the `<head>` section.
-- **config**: An optional `HTMLConfig` object to override the default properties, styles, direction, or language settings.
+The `Emailer.render()` method uses `htmlBoilerplate` to wrap the rendered body
+of a Svelte component (provided in `render` as `component`). The function also
+accepts:
 
-Together, these properties and `htmlBoilerplate` facilitate the creation of highly customizable, visually consistent email templates with minimal setup.
+- **head**: Optional custom content or metadata for the `<head>` section.
+- **config**: An optional `HTMLConfig` object to override the default
+  properties, styles, direction, or language settings.
+
+Together, these properties and `htmlBoilerplate` facilitate the creation of
+highly customizable, visually consistent email templates with minimal setup.
 
 ```typescript
-  htmlBoilerplate = (children: string, head?: string, options?: HTMLConfig) => {
-    const { props, dir, lang, style } = options ||
-      { props: this.props, dir: this.dir, lang: this.lang, style: this.style };
-    return `<!doctype html> 
+htmlBoilerplate = (children: string, head?: string, options?: HTMLConfig) => {
+  const { props, dir, lang, style } = options ||
+    { props: this.props, dir: this.dir, lang: this.lang, style: this.style };
+  return `<!doctype html> 
     <html ${props?.html.join(" ")} dir=${dir} lang=${lang}> 
     <head> 
       <style>*{box-sizing:border-box;text-decoration:none;border:0;padding:0;margin:0;}${style}</style>
@@ -186,8 +224,11 @@ Together, these properties and `htmlBoilerplate` facilitate the creation of high
       </table>
     <body> 
     </html>`;
-  };
+};
 ```
+
 ---
 
-> **Note**: This library is intended as a learning tool and a starting point. As developers become comfortable with the email structure and utilities provided, they are encouraged to transition toward standalone solutions.
+> **Note**: This library is intended as a learning tool and a starting point. As
+> developers become comfortable with the email structure and utilities provided,
+> they are encouraged to transition toward standalone solutions.

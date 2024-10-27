@@ -1,6 +1,6 @@
 import Emailer from "./emailer/index.js";
 
-export { default as Button } from "./comps/button.svelte"
+export { default as Button } from "./comps/button.svelte";
 export { default as Card } from "./comps/card.svelte";
 export { default as Container } from "./comps/container.svelte";
 export { default as Heading } from "./comps/heading.svelte";

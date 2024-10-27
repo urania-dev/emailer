@@ -1,19 +1,19 @@
 import { inline } from "../index.js";
 import { render } from "svelte/server";
 export default class Emailer {
-    props = {
-        html: [`style=${inline("bg-neutral-50 text-neutral-900 p-4")}`],
-        body: [`style=${inline("bg-neutral-50 text-neutral-900")}`],
-        container: [`style=${inline("max-w-[620px] mx-auto py-4")}`],
-    };
-    style = "";
-    dir = "ltr";
-    lang = "en";
-    head = "";
-    htmlBoilerplate = (children, head, options) => {
-        const { props, dir, lang, style } = options ||
-            { props: this.props, dir: this.dir, lang: this.lang, style: this.style };
-        return `<!doctype html> 
+  props = {
+    html: [`style=${inline("bg-neutral-50 text-neutral-900 p-4")}`],
+    body: [`style=${inline("bg-neutral-50 text-neutral-900")}`],
+    container: [`style=${inline("max-w-[620px] mx-auto py-4")}`],
+  };
+  style = "";
+  dir = "ltr";
+  lang = "en";
+  head = "";
+  htmlBoilerplate = (children, head, options) => {
+    const { props, dir, lang, style } = options ||
+      { props: this.props, dir: this.dir, lang: this.lang, style: this.style };
+    return `<!doctype html> 
     <html ${props?.html.join(" ")} dir=${dir} lang=${lang}> 
     <head> 
       <style>*{box-sizing:border-box;text-decoration:none;border:0;padding:0;margin:0;}${style}</style>
@@ -25,12 +25,12 @@ export default class Emailer {
       </table>
     <body> 
     </html>`;
-    };
-    // deno-lint-ignore no-explicit-any
-    render = (component, props, config) => {
-        const rendered = render(component, { props });
-        console.log("==>", rendered);
-        const html = this.htmlBoilerplate(rendered.body, rendered.head, config);
-        return html;
-    };
+  };
+  // deno-lint-ignore no-explicit-any
+  render = (component, props, config) => {
+    const rendered = render(component, { props });
+    console.log("==>", rendered);
+    const html = this.htmlBoilerplate(rendered.body, rendered.head, config);
+    return html;
+  };
 }
