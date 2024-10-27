@@ -2,7 +2,7 @@
   "name": "@uraniadev/emailer",
   "author": "uraniadev <m.isaia@urania.dev> (https://github.com/urania-dev)",
   "description": "An email boilerplate in Svelte5 Tailwindcss and Tw-to-CSS, inspired by @react/email",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
