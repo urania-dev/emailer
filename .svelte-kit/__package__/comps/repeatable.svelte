@@ -13,7 +13,7 @@
 <table style={inline('m-0 w-full border-0 max-w-[620px] border-collapse', classes)}>
 	<tbody>
 		{#if itemsSnippet && items?.length}
-			<tr><td>{@render children?.()}</td></tr>
+			{#if children}<tr><td>{@render children?.()}</td></tr>{/if}
 			{#each items as item}
 				<tr><td>{@render itemsSnippet(item)}</td></tr>
 			{/each}

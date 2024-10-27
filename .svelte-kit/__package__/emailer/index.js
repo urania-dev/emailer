@@ -9,11 +9,15 @@ export default class Emailer {
     style = "";
     dir = "ltr";
     lang = "en";
-    htmlBoilerplate = (children, props, dir = "ltr", lang = "en", style = "") => {
+    head = "";
+    htmlBoilerplate = (children, head, options) => {
+        const { props, dir, lang, style } = options ||
+            { props: this.props, dir: this.dir, lang: this.lang, style: this.style };
         return `<!doctype html> 
     <html ${props?.html.join(" ")} dir=${dir} lang=${lang}> 
     <head> 
       <style>*{box-sizing:border-box;text-decoration:none;border:0;padding:0;margin:0;}${style}</style>
+      ${head || this.head}
     </head> 
     <body ${props?.body.join(" ")}> 
       <table ${props?.container.join(" ")}>
@@ -23,9 +27,10 @@ export default class Emailer {
     </html>`;
     };
     // eslint-disable-next-line ts/no-explicit-any
-    render = (component, props) => {
+    render = (component, props, config) => {
         const rendered = render(component, { props });
-        const html = this.htmlBoilerplate(rendered.body, this.props, this.dir, this.lang, this.style);
+        console.log("==>", rendered);
+        const html = this.htmlBoilerplate(rendered.body, rendered.head, config);
         return html;
     };
 }

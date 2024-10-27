@@ -3,6 +3,13 @@ import type { Component, ComponentProps } from "svelte";
 import { inline } from "$lib/utils/index.js";
 import { render } from "svelte/server";
 
+export type HTMLConfig = {
+  props: { [key: string]: string[] };
+  dir: string;
+  lang: string;
+  style: string;
+};
+
 export default class Emailer {
   props: { [key: string]: string[] } = {
     html: [`style=${inline("bg-neutral-50 text-neutral-900 p-4")}`],
@@ -14,18 +21,16 @@ export default class Emailer {
   dir = "ltr";
   lang = "en";
 
+  head = "";
 
-  htmlBoilerplate = (
-    children: string,
-    props: { [key: string]: string[] },
-    dir = "ltr",
-    lang = "en",
-    style: string = "",
-  ) => {
+  htmlBoilerplate = (children: string, head?: string, options?: HTMLConfig) => {
+    const { props, dir, lang, style } = options ||
+      { props: this.props, dir: this.dir, lang: this.lang, style: this.style };
     return `<!doctype html> 
     <html ${props?.html.join(" ")} dir=${dir} lang=${lang}> 
     <head> 
       <style>*{box-sizing:border-box;text-decoration:none;border:0;padding:0;margin:0;}${style}</style>
+      ${head || this.head}
     </head> 
     <body ${props?.body.join(" ")}> 
       <table ${props?.container.join(" ")}>
@@ -38,16 +43,15 @@ export default class Emailer {
   // eslint-disable-next-line ts/no-explicit-any
   render = <T extends Component<any>>(
     component: T,
-    props: ComponentProps<T>,
+    props?: ComponentProps<T>,
+    config?: HTMLConfig,
   ) => {
     const rendered = render(component as Component, { props });
-
+    console.log("==>", rendered);
     const html = this.htmlBoilerplate(
       rendered.body,
-      this.props,
-      this.dir,
-      this.lang,
-      this.style,
+      rendered.head,
+      config,
     );
     return html;
   };

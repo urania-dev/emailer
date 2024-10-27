@@ -1,4 +1,12 @@
 import type { Component, ComponentProps } from "svelte";
+export type HTMLConfig = {
+    props: {
+        [key: string]: string[];
+    };
+    dir: string;
+    lang: string;
+    style: string;
+};
 export default class Emailer {
     props: {
         [key: string]: string[];
@@ -6,8 +14,7 @@ export default class Emailer {
     style: string;
     dir: string;
     lang: string;
-    htmlBoilerplate: (children: string, props: {
-        [key: string]: string[];
-    }, dir?: string, lang?: string, style?: string) => string;
-    render: <T extends Component<any>>(component: T, props: ComponentProps<T>) => string;
+    head: string;
+    htmlBoilerplate: (children: string, head?: string, options?: HTMLConfig) => string;
+    render: <T extends Component<any>>(component: T, props?: ComponentProps<T>, config?: HTMLConfig) => string;
 }
