@@ -248,9 +248,9 @@ Drawing inspiration from resources like [The Copenhagen Book](https://thecopenha
 
 The following references provide further information on creating HTML emails:
 
-  - [Custom HTML Emails - Kevin Powell and Mark Robbins](https://www.youtube.com/watch?v=MHnTpN0g7ko)
-  - [CanIEmail.com - Email HTML & CSS Compatibility](https://www.caniemail.com/)
   - [Good Email Code](https://www.goodemailcode.com/)
+  - [CanIEmail.com - Email HTML & CSS Compatibility](https://www.caniemail.com/)
+  - [Custom HTML Emails - Kevin Powell and Mark Robbins](https://www.youtube.com/watch?v=MHnTpN0g7ko)
 ---
 
 > **Note**: This library is intended as a learning tool and a starting point. As
