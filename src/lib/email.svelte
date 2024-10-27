@@ -1,7 +1,7 @@
 <script lang=ts>
   import { Button, Container, Heading, Image, Paragraph, Repeatable } from "@uraniadev/emailer";
 
-  let {items} : { items: { name: string }[] } =$props()
+  let {items} : { items: { name: string }[] } = $props()
 </script>
 
 <Container>
@@ -11,7 +11,7 @@
   <Heading level={2}>Lorem ipsum dolor sit</Heading>
   <Paragraph>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores veritatis
-    earum <em>et</em>, perspiciatis pariatur exercitationem illum eligendi amet,
+    earum perspiciatis pariatur exercitationem illum eligendi amet,
     deserunt provident ipsum dolore! Voluptas mollitia earum temporibus, hic
     consequatur aperiam recusandae.
   </Paragraph>
