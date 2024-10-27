@@ -14,6 +14,8 @@ toward standalone solutions.
 
 ---
 
+[![@uraniadev/emailer](https://img.youtube.com/vi/IN_KRWKVihs/maxresdefault.jpg)](https://www.youtube.com/watch?v=IN_KRWKVihs)
+
 ## Installation
 
 To install the package, run:
