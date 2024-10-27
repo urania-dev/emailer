@@ -1,10 +1,6 @@
 {
   "name": "@uraniadev/emailer",
-  "author": {
-    "name": "uraniadev",
-    "email": "m.isaia@urania.dev",
-    "url": "https://github.com/uraniadev"
-  },
+  "author": "uraniadev <m.isaia@urania.dev> (https://github.com/urania-dev)",
   "version": "0.1.0",
   "scripts": {
     "dev": "vite dev",
@@ -56,5 +52,26 @@
   },
   "dependencies": {
     "nodemailer": "^6.9.15"
-  }
+  },
+  "description": "An email boilerplate in Svelte5 Tailwindcss and Tw-to-CSS, inspired by @react/email",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/urania-dev/emailer.git"
+  },
+  "keywords": [
+    "emailer",
+    "typescript",
+    "svelte",
+    "svelte5",
+    "email",
+    "nodemailer",
+    "ssr",
+    "sveltekit"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/urania-dev/emailer/issues"
+  },
+  "homepage": "https://github.com/urania-dev/emailer#readme"
 }
