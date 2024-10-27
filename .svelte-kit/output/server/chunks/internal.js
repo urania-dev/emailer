@@ -1,34 +1,4 @@
-import {
-  A as render,
-  a as set_active_reaction,
-  B as push$1,
-  b as set_active_effect,
-  C as setContext,
-  c as active_reaction,
-  d as define_property,
-  E as pop$1,
-  e as active_effect,
-  f as init_operations,
-  g as get_next_sibling,
-  H as HYDRATION_ERROR,
-  h as get_first_child,
-  i as is_array,
-  j as HYDRATION_START,
-  k as HYDRATION_END,
-  l as hydration_failed,
-  m as clear_text_content,
-  o as array_from,
-  p as effect_root,
-  q as create_text,
-  r as branch,
-  t as push,
-  u as pop,
-  v as component_context,
-  w as get,
-  x as set,
-  y as flush_sync,
-  z as mutable_source,
-} from "./index.js";
+import { H as HYDRATION_ERROR, g as get_next_sibling, d as define_property, a as set_active_reaction, b as set_active_effect, i as is_array, c as active_reaction, e as active_effect, f as init_operations, h as get_first_child, j as HYDRATION_START, k as HYDRATION_END, l as hydration_failed, m as clear_text_content, o as array_from, p as effect_root, q as create_text, r as branch, t as push, u as pop, v as component_context, w as get, x as set, y as flush_sync, z as mutable_source, A as render, B as push$1, C as setContext, E as pop$1 } from "./index.js";
 let base = "";
 let assets = base;
 const initial = { base, assets };
@@ -73,7 +43,7 @@ function set_hydrate_node(node) {
 function hydrate_next() {
   return set_hydrate_node(
     /** @type {TemplateNode} */
-    get_next_sibling(hydrate_node),
+    get_next_sibling(hydrate_node)
   );
 }
 const all_registered_events = /* @__PURE__ */ new Set();
@@ -94,11 +64,8 @@ function handle_event_propagation(event) {
   var handled_at = event.__root;
   if (handled_at) {
     var at_idx = path.indexOf(handled_at);
-    if (
-      at_idx !== -1 &&
-      (handler_element === document || handler_element === /** @type {any} */
-          window)
-    ) {
+    if (at_idx !== -1 && (handler_element === document || handler_element === /** @type {any} */
+    window)) {
       event.__root = handler_element;
       return;
     }
@@ -111,13 +78,13 @@ function handle_event_propagation(event) {
     }
   }
   current_target = /** @type {Element} */
-    path[path_idx] || event.target;
+  path[path_idx] || event.target;
   if (current_target === handler_element) return;
   define_property(event, "currentTarget", {
     configurable: true,
     get() {
       return current_target || owner_document;
-    },
+    }
   });
   var previous_reaction = active_reaction;
   var previous_effect = active_effect;
@@ -127,15 +94,12 @@ function handle_event_propagation(event) {
     var throw_error;
     var other_errors = [];
     while (current_target !== null) {
-      var parent_element = current_target.assignedSlot ||
-        current_target.parentNode || /** @type {any} */
-        current_target.host || null;
+      var parent_element = current_target.assignedSlot || current_target.parentNode || /** @type {any} */
+      current_target.host || null;
       try {
         var delegated = current_target["__" + event_name];
-        if (
-          delegated !== void 0 && !/** @type {any} */
-          current_target.disabled
-        ) {
+        if (delegated !== void 0 && !/** @type {any} */
+        current_target.disabled) {
           if (is_array(delegated)) {
             var [fn, ...data] = delegated;
             fn.apply(current_target, [event, ...data]);
@@ -150,10 +114,7 @@ function handle_event_propagation(event) {
           throw_error = error;
         }
       }
-      if (
-        event.cancelBubble || parent_element === handler_element ||
-        parent_element === null
-      ) {
+      if (event.cancelBubble || parent_element === handler_element || parent_element === null) {
         break;
       }
       current_target = parent_element;
@@ -201,12 +162,10 @@ function hydrate(component, options2) {
       /** @type {TemplateNode} */
       get_first_child(target)
     );
-    while (
-      anchor && (anchor.nodeType !== 8 || /** @type {Comment} */
-        anchor.data !== HYDRATION_START)
-    ) {
+    while (anchor && (anchor.nodeType !== 8 || /** @type {Comment} */
+    anchor.data !== HYDRATION_START)) {
       anchor = /** @type {TemplateNode} */
-        get_next_sibling(anchor);
+      get_next_sibling(anchor);
     }
     if (!anchor) {
       throw HYDRATION_ERROR;
@@ -214,15 +173,12 @@ function hydrate(component, options2) {
     set_hydrating(true);
     set_hydrate_node(
       /** @type {Comment} */
-      anchor,
+      anchor
     );
     hydrate_next();
     const instance = _mount(component, { ...options2, anchor });
-    if (
-      hydrate_node === null ||
-      hydrate_node.nodeType !== 8 || /** @type {Comment} */
-      hydrate_node.data !== HYDRATION_END
-    ) {
+    if (hydrate_node === null || hydrate_node.nodeType !== 8 || /** @type {Comment} */
+    hydrate_node.data !== HYDRATION_END) {
       hydration_mismatch();
       throw HYDRATION_ERROR;
     }
@@ -248,10 +204,7 @@ function hydrate(component, options2) {
   }
 }
 const document_listeners = /* @__PURE__ */ new Map();
-function _mount(
-  Component,
-  { target, anchor, props = {}, events, context, intro = true },
-) {
+function _mount(Component, { target, anchor, props = {}, events, context, intro = true }) {
   init_operations();
   var registered_events = /* @__PURE__ */ new Set();
   var event_handle = (events2) => {
@@ -260,14 +213,10 @@ function _mount(
       if (registered_events.has(event_name)) continue;
       registered_events.add(event_name);
       var passive = is_passive_event(event_name);
-      target.addEventListener(event_name, handle_event_propagation, {
-        passive,
-      });
+      target.addEventListener(event_name, handle_event_propagation, { passive });
       var n = document_listeners.get(event_name);
       if (n === void 0) {
-        document.addEventListener(event_name, handle_event_propagation, {
-          passive,
-        });
+        document.addEventListener(event_name, handle_event_propagation, { passive });
         document_listeners.set(event_name, 1);
       } else {
         document_listeners.set(event_name, n + 1);
@@ -295,7 +244,7 @@ function _mount(
         assign_nodes(
           /** @type {TemplateNode} */
           anchor_node,
-          null,
+          null
         );
       }
       component = Component(anchor_node, props) || {};
@@ -343,7 +292,7 @@ function asClassComponent$1(component) {
     constructor(options2) {
       super({
         component,
-        ...options2,
+        ...options2
       });
     }
   };
@@ -369,9 +318,7 @@ class Svelte4Component {
       { ...options2.props || {}, $$events: {} },
       {
         get(target, prop) {
-          return get(
-            sources.get(prop) ?? add_source(prop, Reflect.get(target, prop)),
-          );
+          return get(sources.get(prop) ?? add_source(prop, Reflect.get(target, prop)));
         },
         has(target, prop) {
           get(sources.get(prop) ?? add_source(prop, Reflect.get(target, prop)));
@@ -380,15 +327,15 @@ class Svelte4Component {
         set(target, prop, value) {
           set(sources.get(prop) ?? add_source(prop, value), value);
           return Reflect.set(target, prop, value);
-        },
-      },
+        }
+      }
     );
     this.#instance = (options2.hydrate ? hydrate : mount)(options2.component, {
       target: options2.target,
       props,
       context: options2.context,
       intro: options2.intro ?? false,
-      recover: options2.recover,
+      recover: options2.recover
     });
     if (!options2?.props?.$$host || options2.sync === false) {
       flush_sync();
@@ -404,13 +351,13 @@ class Svelte4Component {
         set(value) {
           this.#instance[key] = value;
         },
-        enumerable: true,
+        enumerable: true
       });
     }
     this.#instance.$set = /** @param {Record<string, any>} next */
-      (next) => {
-        Object.assign(props, next);
-      };
+    (next) => {
+      Object.assign(props, next);
+    };
     this.#instance.$destroy = () => {
       unmount(this.#instance);
     };
@@ -431,7 +378,7 @@ class Svelte4Component {
     return () => {
       this.#events[event] = this.#events[event].filter(
         /** @param {any} fn */
-        (fn) => fn !== cb,
+        (fn) => fn !== cb
       );
     };
   }
@@ -452,7 +399,7 @@ function asClassComponent(component) {
     return {
       css: { code: "", map: null },
       head: result.head,
-      html: result.body,
+      html: result.body
     };
   };
   component_constructor.render = _render;
@@ -473,7 +420,7 @@ function Root($$payload, $$props) {
     components = [],
     form,
     data_0 = null,
-    data_1 = null,
+    data_1 = null
   } = $$props;
   {
     setContext("__svelte__", stores);
@@ -494,7 +441,7 @@ function Root($$payload, $$props) {
         Pyramid_1($$payload2, { data: data_1, form });
         $$payload2.out += `<!---->`;
       },
-      $$slots: { default: true },
+      $$slots: { default: true }
     });
     $$payload.out += `<!---->`;
   } else {
@@ -515,17 +462,7 @@ const root = asClassComponent(Root);
 const options = {
   app_dir: "_app",
   app_template_contains_nonce: false,
-  csp: {
-    "mode": "auto",
-    "directives": {
-      "upgrade-insecure-requests": false,
-      "block-all-mixed-content": false,
-    },
-    "reportOnly": {
-      "upgrade-insecure-requests": false,
-      "block-all-mixed-content": false,
-    },
-  },
+  csp: { "mode": "auto", "directives": { "upgrade-insecure-requests": false, "block-all-mixed-content": false }, "reportOnly": { "upgrade-insecure-requests": false, "block-all-mixed-content": false } },
   csrf_check_origin: true,
   embedded: false,
   env_public_prefix: "PUBLIC_",
@@ -536,16 +473,8 @@ const options = {
   root,
   service_worker: false,
   templates: {
-    app: ({ head, body, assets: assets2, nonce, env }) =>
-      '<!DOCTYPE html>\n<html lang="en">\n  <head>\n    <meta charset="utf-8" />\n    <link rel="icon" href="' +
-      assets2 +
-      '/favicon.png" />\n    <meta name="viewport" content="width=device-width, initial-scale=1" />\n    ' +
-      head +
-      '\n  </head>\n  <body data-sveltekit-preload-data="hover">\n    <div>' +
-      body + "</div>\n  </body>\n</html>\n",
-    error: ({ status, message }) =>
-      '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' +
-      message + `</title>
+    app: ({ head, body, assets: assets2, nonce, env }) => '<!DOCTYPE html>\n<html lang="en">\n  <head>\n    <meta charset="utf-8" />\n    <link rel="icon" href="' + assets2 + '/favicon.png" />\n    <meta name="viewport" content="width=device-width, initial-scale=1" />\n    ' + head + '\n  </head>\n  <body data-sveltekit-preload-data="hover">\n    <div>' + body + "</div>\n  </body>\n</html>\n",
+    error: ({ status, message }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
 			body {
@@ -614,11 +543,9 @@ const options = {
 	</head>
 	<body>
 		<div class="error">
-			<span class="status">` + status +
-      '</span>\n			<div class="message">\n				<h1>' + message +
-      "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n",
+			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "1kn9foy",
+  version_hash: "1178l5f"
 };
 async function get_hooks() {
   return {};
@@ -626,20 +553,20 @@ async function get_hooks() {
 export {
   assets as a,
   base as b,
-  get_hooks as h,
-  options as d,
-  override as o,
-  prerendering as f,
-  public_env as p,
   read_implementation as c,
-  reset as r,
-  safe_public_env as s,
+  options as d,
+  set_private_env as e,
+  prerendering as f,
+  set_public_env as g,
+  get_hooks as h,
+  set_safe_public_env as i,
+  set_read_implementation as j,
   set_assets as k,
   set_building as l,
   set_manifest as m,
   set_prerendering as n,
-  set_private_env as e,
-  set_public_env as g,
-  set_read_implementation as j,
-  set_safe_public_env as i,
+  override as o,
+  public_env as p,
+  reset as r,
+  safe_public_env as s
 };

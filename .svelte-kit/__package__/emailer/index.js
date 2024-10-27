@@ -58,7 +58,6 @@ export default class Emailer {
     // deno-lint-ignore no-explicit-any
     render = (component, props, config) => {
         const rendered = render(component, { props });
-        console.log("==>", rendered);
         const html = this.htmlBoilerplate(rendered.body, rendered.head, config);
         return html;
     };

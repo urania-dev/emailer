@@ -28,9 +28,8 @@ export default class Emailer {
       { props: this.props, dir: this.dir, lang: this.lang, style: this.style };
 
     return `<!DOCTYPE html>
-<html lang="${lang}" dir="${dir}" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" ${
-      props.html.join(" ")
-    }>
+<html lang="${lang}" dir="${dir}" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" ${props.html.join(" ")
+      }>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -65,9 +64,8 @@ export default class Emailer {
   ${head || this.head}
 </head>
 <body xml:lang="${lang}" ${props.body.join(" ")}>
-  <div role="article" aria-roledescription="email" aria-label="email name" lang="${lang}" dir="${dir}" style="font-size: medium; font-size: max(16px, 1rem) ${
-      inline("contents")
-    }">
+  <div role="article" aria-roledescription="email" aria-label="email name" lang="${lang}" dir="${dir}" style="font-size: medium; font-size: max(16px, 1rem) ${inline("contents")
+      }">
     ${children}
   </div>
 </body>
@@ -81,7 +79,6 @@ export default class Emailer {
     config?: HTMLConfig,
   ) => {
     const rendered = render(component as Component, { props });
-    console.log("==>", rendered);
     const html = this.htmlBoilerplate(
       rendered.body,
       rendered.head,

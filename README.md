@@ -4,7 +4,7 @@ This is a library for creating structured and styled HTML emails, intended as a
 transitional resource. Designed for convenience, it allows developers to build
 and customize emails quickly while encouraging best practices by illustrating
 the internal composition of emails through self-contained components. Inspired
-by Resend's [@react/email](https://react.email/).
+by [Resend's @react-email](https://react.email/).
 
 This library takes a similar approach to the one applied by pilcrow's to
 [The Copenhagen Book](https://thecopenhagenbook.com): this library is intended
