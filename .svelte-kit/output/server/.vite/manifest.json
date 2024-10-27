@@ -33,6 +33,15 @@
       "_exports.js"
     ]
   },
+  "node_modules/.deno/@sveltejs+kit@2.7.3/node_modules/@sveltejs/kit/src/runtime/components/svelte-5/layout.svelte": {
+    "file": "entries/fallbacks/layout.svelte.js",
+    "name": "entries/fallbacks/layout.svelte",
+    "src": "node_modules/.deno/@sveltejs+kit@2.7.3/node_modules/@sveltejs/kit/src/runtime/components/svelte-5/layout.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js"
+    ]
+  },
   "node_modules/.deno/@sveltejs+kit@2.7.3/node_modules/@sveltejs/kit/src/runtime/server/index.js": {
     "file": "index.js",
     "name": "index",
@@ -43,23 +52,5 @@
       "_internal.js",
       "_exports.js"
     ]
-  },
-  "src/routes/+layout.svelte": {
-    "file": "entries/pages/_layout.svelte.js",
-    "name": "entries/pages/_layout.svelte",
-    "src": "src/routes/+layout.svelte",
-    "isEntry": true,
-    "imports": [
-      "_index.js"
-    ],
-    "css": [
-      "_app/immutable/assets/_layout.DnWfpnYj.css"
-    ]
-  },
-  "src/routes/+page.svelte": {
-    "file": "entries/pages/_page.svelte.js",
-    "name": "entries/pages/_page.svelte",
-    "src": "src/routes/+page.svelte",
-    "isEntry": true
   }
 }

@@ -1,8 +1,6 @@
 import type { Component, ComponentProps } from "svelte";
 
-import { error } from "@sveltejs/kit";
 import { inline } from "$lib/utils/index.js";
-import nodemailer from "nodemailer";
 import { render } from "svelte/server";
 
 export default class Emailer {
@@ -16,17 +14,6 @@ export default class Emailer {
   dir = "ltr";
   lang = "en";
 
-  constructor(
-    public smtp = {
-      host: "smtp.example.com",
-      port: 465,
-      secure: true,
-      auth: {
-        user: "user",
-        pass: "password",
-      },
-    },
-  ) { }
 
   htmlBoilerplate = (
     children: string,
@@ -63,29 +50,5 @@ export default class Emailer {
       this.style,
     );
     return html;
-  };
-
-  // eslint-disable-next-line ts/no-explicit-any
-  sendMail = async <T extends Component<any>>(
-    component: T,
-    props: ComponentProps<T>,
-    from = "info@example.com",
-    to = "recipient@example.com",
-    subject = "Mail Subject",
-  ) => {
-    const smtp = nodemailer.createTransport(this.smtp);
-    const email = this.render(component, props);
-
-    try {
-      return await smtp.sendMail({
-        from,
-        to,
-        subject,
-        html: email,
-      });
-    } catch (e) {
-      console.error(e);
-      throw error(500);
-    }
   };
 }

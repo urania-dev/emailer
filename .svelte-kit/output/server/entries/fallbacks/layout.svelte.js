@@ -1,5 +1,5 @@
 import { E as pop, B as push } from "../../chunks/index.js";
-function _layout($$payload, $$props) {
+function Layout($$payload, $$props) {
   push();
   let { children } = $$props;
   children($$payload);
@@ -7,5 +7,5 @@ function _layout($$payload, $$props) {
   pop();
 }
 export {
-  _layout as default
+  Layout as default
 };

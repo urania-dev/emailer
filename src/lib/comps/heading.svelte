@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { inline } from '$lib/utils/index.ts';
+	import { inline } from '$lib/utils/index.js';
 
 	interface HeadingProps extends Props {
 		class?: string;

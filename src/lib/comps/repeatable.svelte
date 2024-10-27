@@ -1,5 +1,5 @@
 <script lang="ts" generics="T">
-	import { inline } from '$lib/utils/index.ts';
+	import { inline } from '$lib/utils/index.js';
 
 	interface RepeatableProps extends Props {
 		class?: string;

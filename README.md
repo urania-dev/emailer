@@ -1,66 +1,102 @@
-# create-svelte
+# Emailer Library
 
-Everything you need to build a Svelte library, powered by
-[`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+The `Emailer` class is a Svelte-based email utility designed to render HTML emails using Svelte components and send them through SMTP. This package draws inspiration from `@react/email` and includes customizable styling and structured HTML boilerplate for consistent, responsive email formatting.
 
-Read more about creating a library
-[in the docs](https://svelte.dev/docs/kit/packaging).
+### Library Documentation
 
-## Creating a project
+---
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Overview
 
-```bash
-# create a new project in the current directory
-npx sv create
+This package provides a library of designet do compose and an utility to render styled HTML emails using Svelte. Inspired by `@react/email`, it allows users to compose modular emails with predefined components that are optimized for email clients. It includes utilities for inline styling and structured rendering, making it easy to create responsive email layouts.
 
-# create a new project in my-app
-npx sv create my-app
-```
+---
 
-## Developing
+### Installation
 
-Once you've created a project and installed dependencies with `npm install` (or
-`pnpm install` or `yarn`), start a development server:
+To install the package, run:
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+npm install '@uraniadev/emailer'
 ```
 
-Everything inside `src/lib` is part of your library, everything inside
-`src/routes` can be used as a showcase or preview app.
-
-## Building
-
-To build your library:
+**Note**: Tailwind CSS should be installed separately as a peer dependency to ensure compatibility with custom Tailwind configurations. Run:
 
 ```bash
-npm run package
+npm install tailwindcss
 ```
 
-To create a production version of your showcase app:
+---
 
-```bash
-npm run build
+### Usage
+
+To get started, create your email components as `.svelte` files, import them __server-side__, and use the `Emailer` class to render the final HTML output.
+
+#### Basic Example
+
+```typescript
+import Emailer from '<your-library-name>';
+import EmailComponent from './email.svelte';
+
+// Initialize Emailer
+const emailer = new Emailer();
+
+// Render the email
+const html = emailer.render(EmailComponent, { /* props */ });
+
+// Send the email
+smtp.sendMail(html, { /* SMTP config */ });
 ```
 
-You can preview the production build with `npm run preview`.
+---
 
-> To deploy your app, you may need to install an
-> [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+### Classes and Methods
 
-## Publishing
+#### `Emailer`
 
-Go into the `package.json` and give your package the desired name through the
-`"name"` option. Also consider adding a `"license"` field and point it to a
-`LICENSE` file which you can create from a template (one popular option is the
-[MIT license](https://opensource.org/license/mit/)).
+- **Constructor**: Creates an instance of the Emailer.
+- **Properties**:
+  - `props`: Default inline styles for the email, body, and container.
+  - `style`: Optional custom style string.
+  - `dir`: Text direction, e.g., "ltr" or "rtl".
+  - `lang`: Language of the document.
+  
+- **Methods**:
+  - `htmlBoilerplate(children: string, props: object, dir: string, lang: string, style: string)`: Generates the base HTML boilerplate.
+  - `render<T extends Component>(component: T, props: ComponentProps<T>)`: Renders a Svelte component into HTML format.
+  - `sendMail(html: string, smtpConfig: object)`: Sends the email using the provided SMTP configuration.
 
-To publish your library to [npm](https://www.npmjs.com):
+### Available Components
 
-```bash
-npm publish
-```
+Each component accepts props that extend the base `Props` and support inline styles. Components include:
+
+- **Button**: Styled button with a custom URL.
+- **Card**: Basic container with padding and rounded corners.
+- **Container**: Wrapper with full-width padding.
+- **Heading**: Configurable heading levels (e.g., `<h1>`, `<h2>`).
+- **Image**: Image display with alt text.
+- **Paragraph**: Text paragraph with spacing.
+- **Repeatable**: Iterates and renders an array of items in a table.
+
+---
+
+### Development Dependencies
+
+- **Peer Dependencies**:
+  - `"svelte": "^5.0.0"`
+  - `"tailwindcss"` (User to install their version to support custom configurations)
+
+- **Dependencies**:
+  - `"clsx"`: For dynamic class merging.
+  - `"tailwind-merge"`: To handle Tailwind utility classes.
+  - `"tw-to-css"`: For converting Tailwind classes to CSS (used for inlining styles).
+
+- **Dev Dependencies**:
+  - `"@sveltejs/adapter-auto"`
+  - `"@sveltejs/kit"`
+  - `"@sveltejs/package"`
+  - `"@sveltejs/vite-plugin-svelte"`
+  - `"autoprefixer"`
+  - `"prettier"` and related plugins
+  - `"svelte-check"` and `"typescript"`
+  - `"vite"`
