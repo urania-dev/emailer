@@ -66,7 +66,9 @@ export default class Emailer {
 <body xml:lang="${lang}" ${props.body.join(" ")}>
   <div role="article" aria-roledescription="email" aria-label="email name" lang="${lang}" dir="${dir}" style="font-size: medium; font-size: max(16px, 1rem) ${inline("contents")
       }">
-    ${children}
+      <table ${props?.container.join(" ")}>
+        <tbody><tr><td>${children}</td></tr></tbody>
+        </table>
   </div>
 </body>
 </html>`;

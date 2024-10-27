@@ -1,6 +1,5 @@
 <script lang=ts>
-  import { Button, Container, Heading, Image, Paragraph } from "$lib/index.js";
-  import Repeatable from "./comps/repeatable.svelte";
+  import { Button, Container, Heading, Image, Paragraph, Repeatable } from "@uraniadev/emailer";
 
   let {items} : { items: { name: string }[] } =$props()
 </script>
