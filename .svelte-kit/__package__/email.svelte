@@ -1,5 +1,8 @@
-<script>
-  import { Button, Container, Heading, Image, Paragraph } from "./index.ts";
+<script lang=ts>
+  import { Button, Container, Heading, Image, Paragraph } from "./index.js";
+  import Repeatable from "./comps/repeatable.svelte";
+
+  let {items} : { items: { name: string }[] } =$props()
 </script>
 
 <Container>
@@ -14,4 +17,9 @@
     consequatur aperiam recusandae.
   </Paragraph>
   <Button class="ms-auto" href="https://www.google.com">Deserunt</Button>
+  <Repeatable {items}>
+		{#snippet itemsSnippet(item: (typeof items)[0])}
+			<Paragraph>{item.name}</Paragraph>
+		{/snippet}
+	</Repeatable>
 </Container>

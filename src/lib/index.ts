@@ -1,14 +1,14 @@
-import Emailer from "$lib/emailer/index.js";
+import Emailer from "./emailer/index.js";
 
-export { default as Button } from "$lib/comps/button.svelte";
-export { default as Card } from "$lib/comps/card.svelte";
-export { default as Container } from "$lib/comps/container.svelte";
-export { default as Heading } from "$lib/comps/heading.svelte";
-export { default as Image } from "$lib/comps/image.svelte";
-export { default as Paragraph } from "$lib/comps/paragraph.svelte";
-export { default as Repeatable } from "$lib/comps/repeatable.svelte";
+export { default as Button } from "./comps/button.svelte"
+export { default as Card } from "./comps/card.svelte";
+export { default as Container } from "./comps/container.svelte";
+export { default as Heading } from "./comps/heading.svelte";
+export { default as Image } from "./comps/image.svelte";
+export { default as Paragraph } from "./comps/paragraph.svelte";
+export { default as Repeatable } from "./comps/repeatable.svelte";
 
-export { inline } from "$lib/utils/index.js";
+export { inline } from "./utils/index.js";
 
 export default Emailer;
 

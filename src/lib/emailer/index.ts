@@ -1,6 +1,6 @@
 import type { Component, ComponentProps } from "svelte";
 
-import { inline } from "$lib/utils/index.js";
+import { inline } from "../index.js";
 import { render } from "svelte/server";
 
 export type HTMLConfig = {
@@ -40,7 +40,8 @@ export default class Emailer {
     </html>`;
   };
 
-  // eslint-disable-next-line ts/no-explicit-any
+
+  // deno-lint-ignore no-explicit-any
   render = <T extends Component<any>>(
     component: T,
     props?: ComponentProps<T>,

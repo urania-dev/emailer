@@ -1,4 +1,4 @@
-import { inline } from "../utils/index.js";
+import { inline } from "../index.js";
 import { render } from "svelte/server";
 export default class Emailer {
     props = {
@@ -26,7 +26,7 @@ export default class Emailer {
     <body> 
     </html>`;
     };
-    // eslint-disable-next-line ts/no-explicit-any
+    // deno-lint-ignore no-explicit-any
     render = (component, props, config) => {
         const rendered = render(component, { props });
         console.log("==>", rendered);
