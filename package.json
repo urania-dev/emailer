@@ -2,6 +2,7 @@
   "name": "@uraniadev/emailer",
   "author": "uraniadev <m.isaia@urania.dev> (https://github.com/urania-dev)",
   "description": "An email boilerplate in Svelte5 Tailwindcss and Tw-to-CSS, inspired by @react/email",
+  "version": "0.0.1",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
@@ -21,7 +22,6 @@
     "url": "https://github.com/urania-dev/emailer/issues"
   },
   "homepage": "https://github.com/urania-dev/emailer#readme",
-  "version": "1.0.0",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && npm run package",
