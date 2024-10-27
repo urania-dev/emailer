@@ -36,7 +36,13 @@ Create an email using the provided components:
 ```svelte
 <!-- src/lib/email.svelte -->
 <script>
-  import { Button, Container, Heading, Image, Paragraph } from "@uraniadev/emailer";
+  import {
+    Button,
+    Container, 
+    Heading, 
+    Image, 
+    Paragraph 
+  } from "@uraniadev/emailer";
 </script>
 
 <Container>
@@ -227,6 +233,24 @@ htmlBoilerplate = (children: string, head?: string, options?: HTMLConfig) => {
 };
 ```
 
+---
+
+## Library Purpose and Long-Term View
+
+The library is structured as an auto-deprecating toolkit for email composition, encouraging developers to understand and apply best practices for maintainable email templates in production. The following approaches are suggested:
+
+- Component Composition: Understand how each component, such as Container, Button, and Heading, is composed and utilize them to build reusable templates.
+- Self-Managed Rendering: Implement Emailer on your server, simplifying future template updates and adhering to scalable, maintainable practices.
+
+Drawing inspiration from resources like [The Copenhagen Book](https://thecopenhagenbook.com), this library advocates for transparency in development practices and empowers developers to confidently transition to self-maintained code structures.
+
+### References and Resources
+
+The following references provide further information on creating HTML emails:
+
+  - [Custom HTML Emails - Kevin Powell and Mark Robbins](https://www.youtube.com/watch?v=MHnTpN0g7ko)
+  - [CanIEmail.com - Email HTML & CSS Compatibility](https://www.caniemail.com/)
+  - [Good Email Code](https://www.goodemailcode.com/)
 ---
 
 > **Note**: This library is intended as a learning tool and a starting point. As
