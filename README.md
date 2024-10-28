@@ -152,7 +152,7 @@ For general text blocks, styled for readability.
 This is a text snippet that appears under the subject line in the inbox but is hidden from the main email content when it’s opened. [*](https://www.goodemailcode.com/email-code/preheader)
 
 ```svelte
-<Preview content="The preview text of the image, to customize it from the actual mail" />
+<Preview content="The preview of the content, to customize it from the actual mail" />
 ```
 
 ### `Repeatable`
