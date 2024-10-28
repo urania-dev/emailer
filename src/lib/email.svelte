@@ -1,14 +1,19 @@
 <script lang=ts>
-  import { Button, Container, Heading, Image, Paragraph, Repeatable } from "@uraniadev/emailer";
+  import { env } from "$env/dynamic/public";
+  import { Button, Container, Heading, Image, Paragraph, Repeatable, Preview } from "$lib/index.js";
 
   let {items} : { items: { name: string }[] } = $props()
 </script>
 
+<Preview content="📧 This is your new formatted email service!" />
+
 <Container>
+
   <Image
-    src="https://fastly.picsum.photos/id/36/536/354.jpg?hmac=SNrmtCzZL_rwTwXaCYEMX3PwbuzG921CR4CeWe8UKq4"
+    src={env.PUBLIC_IMAGE_URL}
   />
   <Heading level={2}>Lorem ipsum dolor sit</Heading>
+
   <Paragraph>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores veritatis
     earum perspiciatis pariatur exercitationem illum eligendi amet,
@@ -16,6 +21,7 @@
     consequatur aperiam recusandae.
   </Paragraph>
   <Button class="ms-auto" href="https://www.google.com">Deserunt</Button>
+
   <Repeatable {items}>
 		{#snippet itemsSnippet(item: (typeof items)[0])}
 			<Paragraph>{item.name}</Paragraph>

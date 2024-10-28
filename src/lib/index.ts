@@ -6,6 +6,7 @@ export { default as Container } from "./comps/container.svelte";
 export { default as Heading } from "./comps/heading.svelte";
 export { default as Image } from "./comps/image.svelte";
 export { default as Paragraph } from "./comps/paragraph.svelte";
+export { default as Preview } from "./comps/preview.svelte";
 export { default as Repeatable } from "./comps/repeatable.svelte";
 
 export { inline } from "./utils/index.js";
@@ -23,7 +24,7 @@ export default Emailer;
  *  import Emailer from '@uraniadev/emailer';
  *  import Email from './email.svelte'
  *
- *  const emailer = new Emailer({...smtpConfig})
+ *  const emailer = new Emailer()
  *
  *  const html = emailer.render(email, {...props})
  *

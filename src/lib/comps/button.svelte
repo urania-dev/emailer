@@ -10,7 +10,7 @@
 </script>
 
 <a href={href||'#'}>
-	<div style={inline('px-4 py-2 mx-4', classes)}>
+	<div style={inline('px-4 py-2 mx-4 text-center', classes)}>
 		{@render children?.()}
 	</div>
 </a>

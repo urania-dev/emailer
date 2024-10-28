@@ -12,8 +12,8 @@ export type HTMLConfig = {
 
 export default class Emailer {
   props: { [key: string]: string[] } = {
-    html: [`style=${inline("bg-neutral-50 text-neutral-900 p-4")}`],
-    body: [`style=${inline("bg-neutral-50 text-neutral-900")}`],
+    html: [`style=${inline("bg-neutral-50 text-neutral-900 p-4 dark:bg-neutral-950 dark:text-neutral-50")}`],
+    body: [`style=${inline("bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-50")}`],
     container: [`style=${inline("max-w-[620px] mx-auto py-4")}`],
   };
 
@@ -28,8 +28,7 @@ export default class Emailer {
       { props: this.props, dir: this.dir, lang: this.lang, style: this.style };
 
     return `<!DOCTYPE html>
-<html lang="${lang}" dir="${dir}" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" ${props.html.join(" ")
-      }>
+<html lang="${lang}" dir="${dir}" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" ${props.html.join(" ")}>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">

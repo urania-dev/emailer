@@ -37,10 +37,10 @@ Create an email using the provided components:
 <script>
   import {
     Button,
-    Container, 
-    Heading, 
-    Image, 
-    Paragraph 
+    Container,
+    Heading,
+    Image,
+    Paragraph
   } from "@uraniadev/emailer";
 </script>
 
@@ -50,8 +50,8 @@ Create an email using the provided components:
   <Paragraph>
     Lorem ipsum dolor sit amet consectetur adipisicing elit.
     Maiores veritatis earum, perspiciatis pariatur exercitationem
-    illum eligendi amet,deserunt provident ipsum dolore! 
-    Voluptas mollitia earum temporibus, hic consequatur 
+    illum eligendi amet,deserunt provident ipsum dolore!
+    Voluptas mollitia earum temporibus, hic consequatur
     aperiam recusandae.
   </Paragraph>
   <Button href="https://www.example.com">Deserunt</Button>
@@ -101,7 +101,7 @@ export function inline(...inputs: ClassValue[]) {
 
 ### `Button`
 
-A link-styled button that accepts `class` and `href` attributes.
+A link-styled button that accepts `class` and `href` attributes. [*](https://www.goodemailcode.com/email-code/link-button)
 
 ```svelte
 <Button class="bg-blue-500 text-white" href="https://example.com">Click Me</Button>
@@ -145,6 +145,14 @@ For general text blocks, styled for readability.
 
 ```svelte
 <Paragraph>This is a paragraph of text</Paragraph>
+```
+
+### `Preview`
+
+This is a text snippet that appears under the subject line in the inbox but is hidden from the main email content when it’s opened. [*](https://www.goodemailcode.com/email-code/preheader)
+
+```svelte
+<Preview content="The preview text of the image, to customize it from the actual mail" />
 ```
 
 ### `Repeatable`
@@ -217,39 +225,46 @@ highly customizable, visually consistent email templates with minimal setup.
 htmlBoilerplate = (children: string, head?: string, options?: HTMLConfig) => {
   const { props, dir, lang, style } = options ||
     { props: this.props, dir: this.dir, lang: this.lang, style: this.style };
-  return `<!doctype html> 
-    <html ${props?.html.join(" ")} dir=${dir} lang=${lang}> 
-    <head> 
+  return `<!doctype html>
+    <html ${props?.html.join(" ")} dir=${dir} lang=${lang}>
+    <head>
       <style>*{box-sizing:border-box;text-decoration:none;border:0;padding:0;margin:0;}${style}</style>
       ${head || this.head}
-    </head> 
-    <body ${props?.body.join(" ")}> 
+    </head>
+    <body ${props?.body.join(" ")}>
       <table ${props?.container.join(" ")}>
         <tbody><tr><td>${children}</td></tr></tbody>
       </table>
-    <body> 
+    <body>
     </html>`;
 };
 ```
-
 ---
 
 ## Library Purpose and Long-Term View
 
-The library is structured as an auto-deprecating toolkit for email composition, encouraging developers to understand and apply best practices for maintainable email templates in production. The following approaches are suggested:
+The library is structured as an auto-deprecating toolkit for email composition,
+encouraging developers to understand and apply best practices for maintainable
+email templates in production. The following approaches are suggested:
 
-- Component Composition: Understand how each component, such as Container, Button, and Heading, is composed and utilize them to build reusable templates.
-- Self-Managed Rendering: Implement Emailer on your server, simplifying future template updates and adhering to scalable, maintainable practices.
+- Component Composition: Understand how each component, such as Container,
+  Button, and Heading, is composed and utilize them to build reusable templates.
+- Self-Managed Rendering: Implement Emailer on your server, simplifying future
+  template updates and adhering to scalable, maintainable practices.
 
-Drawing inspiration from resources like [The Copenhagen Book](https://thecopenhagenbook.com), this library advocates for transparency in development practices and empowers developers to confidently transition to self-maintained code structures.
+Drawing inspiration from resources like
+[The Copenhagen Book](https://thecopenhagenbook.com), this library advocates for
+transparency in development practices and empowers developers to confidently
+transition to self-maintained code structures.
 
 ### References and Resources
 
 The following references provide further information on creating HTML emails:
 
-  - [Good Email Code](https://www.goodemailcode.com/)
-  - [CanIEmail.com - Email HTML & CSS Compatibility](https://www.caniemail.com/)
-  - [Custom HTML Emails - Kevin Powell and Mark Robbins](https://www.youtube.com/watch?v=MHnTpN0g7ko)
+- [Good Email Code](https://www.goodemailcode.com/)
+- [CanIEmail.com - Email HTML & CSS Compatibility](https://www.caniemail.com/)
+- [Custom HTML Emails - Kevin Powell and Mark Robbins](https://www.youtube.com/watch?v=MHnTpN0g7ko)
+
 ---
 
 > **Note**: This library is intended as a learning tool and a starting point. As
